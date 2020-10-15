@@ -33,6 +33,8 @@ public class OrderService {
 
     @Autowired
     private ItemDao itemDao;
+    @Autowired
+    private UserService userService;
 
     @Transactional
     public int save(int userId) throws ExceptionConfig.MyException {
@@ -72,17 +74,14 @@ public class OrderService {
     }
 
     private List<Orders> pack(List<Orders> list) {
-        for (Orders orders : list) {
-            orders=pack(orders);
+        if (Objects.nonNull(list) && !list.isEmpty()) {
+            for (Orders orders : list) {
+                orders = pack(orders);
+            }
         }
-        return list;
+            return list;
     }
 
-    private Orders pack(Orders orders) {
-        if (Objects.nonNull(orders)){
-        }
-        return orders;
-    }
 
     public Orders get(int id) {
         return pack(orderDao.select(id));
@@ -96,7 +95,22 @@ public class OrderService {
         old.setAddress(order.getAddress());
         orderDao.update(old);
     }
- /*   public List<Orders> getListByUserid(int userid,int page,int size){
-        return pack(orderDao.)
-    }*/
+    public List<Orders> getListByUserid(int userid,int page,int size){
+        return pack(orderDao.selectListByUserId(userid,page*(size-1),size));
+    }
+    private Orders pack(Orders orders){
+        if (Objects.nonNull(orders)){
+            List<Items> itemsList=itemDao.selectList(orders.getId());
+            for (Items items : itemsList) {
+                items.setGood(goodService.get(items.getGoodId()));
+            }
+            orders.setItemList(itemsList);
+            orders.setUser(userService.get(orders.getUserId()));
+        }
+        return orders;
+    }
+    public int getCountByUserid(int userId){
+        return orderDao.selectCountByUserid(userId);
+    }
+
 }

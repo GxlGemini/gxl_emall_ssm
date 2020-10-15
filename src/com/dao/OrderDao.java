@@ -3,6 +3,8 @@ package com.dao;
 import com.entity.Orders;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 /**
  * @Author linxiaobai
  * @Date 2020/9/8 15:19
@@ -17,7 +19,7 @@ public interface OrderDao {
 
     @Insert("insert into orders (total,amount,status,paytype,name,phone,address,systime,user_id)" +
             "values (#{total},#{amount},#{status},#{paytype},#{name},#{phone},#{address},now(),#{userId})")
-    @SelectKey(keyProperty ="id",statement = "SELECT LAST_INSERT_ID()",before = false,resultType = Integer.class)
+    @SelectKey(keyProperty = "id", statement = "SELECT LAST_INSERT_ID()", before = false, resultType = Integer.class)
     public boolean insert(Orders order);
 
     @Update("update orders set status=#{status},paytype=#{paytype},name=#{name},phone=#{phone},address=#{address} where id=#{id}")
@@ -28,4 +30,16 @@ public interface OrderDao {
 
     @Update("delete from orders where id=#{id}")
     public boolean delete(int id);
+
+    @Select("select count(*) from orders where status=#{status}")
+    public int selectCountByStatus(@Param("status")byte status);
+
+    @Select("select count(*) from orders where user_id=#{userId}")
+    public  int selectCountByUserid(@Param("userId") int userId);
+
+    @Select("select * from orders order by id desc limit #{begin}, #{size}")
+    public List<Orders> selectList(@Param("begin")int begin,@Param("size")int size);
+
+    @Select("select * from orders where user_id=#{userId} order by id desc limit #{begin},#{size}")
+    public List<Orders> selectListByUserId(@Param("userId")int userId,@Param("begin")int begin,@Param("size")int size);
 }

@@ -7,12 +7,10 @@ import com.service.CartService;
 import com.service.GoodService;
 import com.service.OrderService;
 import com.service.UserService;
+import com.util.PageUtil;
 import com.util.SafeUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletRequest;
@@ -163,7 +161,13 @@ public class UserController {
      * @return
      */
     @GetMapping("/order")
-    public String order() {
+    public String order(HttpServletRequest request,HttpSession session,
+                        @RequestParam(required = false,defaultValue = "1")int page,
+                        @RequestParam(required = false,defaultValue = "6")int size)
+                         {
+                             Users users= (Users) session.getAttribute("user");
+                             request.setAttribute("orderList", orderService.getListByUserid(users.getId(), page, size));
+                             request.setAttribute("pageHtml", PageUtil.getPageHtml(request, orderService.getCountByUserid(users.getId()), page, size));
         return "/index/order.jsp";
     }
 

@@ -35,12 +35,12 @@ public class Orders {
     private Date systime;
     private int userId;
     private Users user;
-    private List<Items> itemsList;
+    private List<Items> itemList;
 
     public Orders() {
     }
 
-    public Orders(int id, int total, int amount, byte status, byte paytype, String name, String phone, String address, Date systime, int userId, Users user, List<Items> itemsList) {
+    public Orders(int id, int total, int amount, byte status, byte paytype, String name, String phone, String address, Date systime, int userId, Users user, List<Items> itemList) {
         this.id = id;
         this.total = total;
         this.amount = amount;
@@ -52,7 +52,7 @@ public class Orders {
         this.systime = systime;
         this.userId = userId;
         this.user = user;
-        this.itemsList = itemsList;
+        this.itemList = itemList;
     }
 
     public static byte getStatusUnpay() {
@@ -171,29 +171,11 @@ public class Orders {
         this.user = user;
     }
 
-    public List<Items> getItemsList() {
-        return itemsList;
+    public List<Items> getItemList() {
+        return itemList;
     }
 
-    public void setItemsList(List<Items> itemsList) {
-        this.itemsList = itemsList;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", total=" + total +
-                ", amount=" + amount +
-                ", status=" + status +
-                ", paytype=" + paytype +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", address='" + address + '\'' +
-                ", systime=" + systime +
-                ", userId=" + userId +
-                ", user=" + user +
-                ", itemsList=" + itemsList +
-                '}';
+    public void setItemList(List<Items> itemList) {
+        this.itemList = itemList;
     }
 }
