@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="gxl_emall_ssm_:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/gxl_emall_ssm__war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="gxl_emall_ssm_/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="gxl_emall_ssm_" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
