@@ -26,6 +26,6 @@ public interface TopsDao {
     @Update("delete from tops where id=#{id}")
     public boolean delete(int id);
 
-  /*  @Delete("delete from tops where good_id=#{goodId}")
-    public boolean delete();*/
+    @Delete("delete from tops where good_id=#{goodId}")
+    public boolean delete();
 }

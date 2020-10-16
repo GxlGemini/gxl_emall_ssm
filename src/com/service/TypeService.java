@@ -27,7 +27,7 @@ public class TypeService {
             return typeDao.select(id);
         }
 
-      /*  public Tops getByGoodIdAndType(int goodId,byte type){
+       /* public Tops getByGoodIdAndType(int goodId, byte type){
             return typeDao.selectByGoodIdAndType(goodId,type);
         }*/
 
