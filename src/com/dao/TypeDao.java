@@ -26,7 +26,7 @@ public interface TypeDao {
     @Update("update types set name=#{name},num=#{num} where id=#{id})")
     public boolean update(Types types);
 
-    @Delete("delete from  types where id=#{id}")
+    @Update("delete from  types where id=#{id}")
     public boolean delete(int id);
 
 }

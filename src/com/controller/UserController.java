@@ -7,7 +7,7 @@ import com.service.CartService;
 import com.service.GoodService;
 import com.service.OrderService;
 import com.service.UserService;
-import com.util.PageUtil;
+import com.util.demo.PageUtil;
 import com.util.SafeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -61,8 +61,6 @@ public class UserController {
 
     @GetMapping("/login")
     public String login() {
-
-
         return "/index/login.jsp";
     }
 

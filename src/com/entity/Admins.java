@@ -8,24 +8,20 @@ package com.entity;
  **/
 public class Admins {
 
-    private Integer id;
+    private int id;
     private String username;
     private String password;
+    private String passwordNew;
+
 
     public Admins() {
     }
 
-    public Admins(Integer id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,12 +41,21 @@ public class Admins {
         this.password = password;
     }
 
+    public String getPasswordNew() {
+        return passwordNew;
+    }
+
+    public void setPasswordNew(String passwordNew) {
+        this.passwordNew = passwordNew;
+    }
+
     @Override
     public String toString() {
         return "Admins{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", passwordNew='" + passwordNew + '\'' +
                 '}';
     }
 }

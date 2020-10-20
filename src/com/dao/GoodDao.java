@@ -1,9 +1,7 @@
 package com.dao;
 
 import com.entity.Goods;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -19,7 +17,8 @@ public interface GoodDao {
     public int selectCount();
 
     @Select("select * from goods where id in (${ids}) order by id desc limit #{begin}, #{size}")
-    public List<Goods> selectListByIds(@Param("ids") String ids, @Param("begin") int begin, @Param("size") int size);
+    public List<Goods> selectListByIds(@Param("ids") String ids, @Param("begin") int begin,
+                                       @Param("size") int size);
 
     @Select("select * from goods where type_id=#{typeId} order by id desc limit #{begin},#{size}")
     public List<Goods> selectListByTypeId(@Param("typeId") int typeId, @Param("begin") int begin, @Param("size") int size);
@@ -63,4 +62,9 @@ public interface GoodDao {
     @Update("update goods set cover=#{cover},name=#{name},intro=#{intro},spec=#{spec},"
             + "content=#{content},price=#{price},stock=#{stock},type_id=#{typeId} where id=#{id}")
     public boolean update(Goods good);
+
+    @Insert("insert into goods (cover,name,intro,spec,content,price,stock,type_id)"
+    +"values (#{cover},#{name},#{intro},#{spec},#{content},#{price},#{stock},#{typeId})")
+    @SelectKey(keyProperty = "id",statement = "SELECT LAST_INSERT_ID()",before = false,resultType = Integer.class)
+    public boolean insert(Goods goods);
 }

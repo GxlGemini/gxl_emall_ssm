@@ -84,4 +84,17 @@ public class GoodService {
     public boolean update(Goods good){
         return goodDao.update(good);
     }
+
+    public Object getListByIds(String goodids, int page, int size) {
+        return Objects.nonNull(goodids)?packGood(goodDao.selectListByIds(
+                goodids, size*(page-1), size)):null;
+    }
+
+    public long getCountByIds(String goodids) {
+        return goodDao.selectCountByIds(goodids);
+    }
+
+    public boolean add(Goods goods) {
+        return goodDao.insert(goods);
+    }
 }

@@ -88,7 +88,7 @@ public class SafeUtil_1 {
 
     public static void main(String[] args) {
 
-        System.out.println(encrypt_md5("123"));
+        System.out.println(encrypt_md5("admin"));
 
 //        System.out.println(encode("123"));
 

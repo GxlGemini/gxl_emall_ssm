@@ -26,7 +26,7 @@
 			</div>
 			<div class="form-group">
 				<div class="col-md-4 col-md-offset-4">
-					<input type="password" class="form-control" style="height:auto;padding:10px;" placeholder="输入密码" name="password" value="admin">
+					<input type="password" class="form-control" style="height:auto;padding:10px;" placeholder="输入密码" name="password" value="admi">
 				</div>
 			</div>
 			<div class="col-md-4 col-md-offset-4">			

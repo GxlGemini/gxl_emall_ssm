@@ -27,9 +27,19 @@ public class TypeService {
             return typeDao.select(id);
         }
 
-       /* public Tops getByGoodIdAndType(int goodId, byte type){
+        /*public Tops getByGoodIdAndType(int goodId, byte type){
             return typeDao.selectByGoodIdAndType(goodId,type);
         }*/
 
+        public boolean add(Types types){
+            return typeDao.insert(types);
+        }
+
+        public boolean update(Types types){
+            return typeDao.update(types);
+        }
+        public boolean delete(int id){
+            return typeDao.delete(id);
+        }
 
 }
